@@ -1,0 +1,33 @@
+# LLM & Agent Framework
+langchain==0.3.25
+langchain-community==0.3.24
+langchain-openai==0.3.16
+langchain-anthropic==0.3.15
+langchain-experimental==0.3.4
+
+# LLM APIs
+openai==1.82.1
+anthropic==0.52.0
+
+# Datenbank
+psycopg2-binary==2.9.10
+sqlalchemy==2.0.41
+
+# Datenverarbeitung & Analyse
+pandas==2.2.3
+numpy==2.2.5
+scikit-learn==1.6.1
+
+# Visualisierung
+matplotlib==3.10.3
+seaborn==0.13.2
+
+# Benutzeroberfläche
+streamlit==1.45.1
+
+# Umgebungsvariablen
+python-dotenv==1.1.0
+
+prophet==1.1.5
+xgboost==2.1.4
+statsmodels==0.14.4

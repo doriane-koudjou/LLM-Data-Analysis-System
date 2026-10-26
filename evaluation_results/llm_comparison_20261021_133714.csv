@@ -1,0 +1,151 @@
+model,strategy,test_id,question,db,difficulty,correct,ex_score,keyword_match,captured_sql_count,response_time_seconds,response_preview,error
+claude-sonnet-4-6,full_prompt,PT_001,How many customers are in the database?,northwind,easy,True,1.0,,2,11.59,"There are **two databases** connected, both containing customer data:
+
+| Database | Table | Customer Count |
+|---|---|---|
+| **Northwind** | `customers` | **91** |
+| **AdventureWorks** | `sales.custom",
+claude-sonnet-4-6,full_prompt,PT_002,How many products does the database contain?,northwind,easy,True,1.0,,2,9.75,"Since two databases are connected, here's the product count for each:
+
+| Database | Table | Product Count |
+|---|---|---|
+| **Northwind** | `products` | **77** |
+| **AdventureWorks** | `production.pro",
+claude-sonnet-4-6,full_prompt,PT_003,What are the top 5 products by total revenue?,northwind,medium,True,1.0,,2,35.71,"Here are the **Top 5 Products by Total Revenue** across both databases:
+
+---
+
+### 🛒 Northwind Database
+
+| Rank | Product | Total Revenue |
+|------|---------|--------------|
+| 1 | **Côte de Blaye** | $",
+claude-sonnet-4-6,full_prompt,PT_004,What is the total number of orders per country?,northwind,medium,True,1.0,,2,35.95,"Here are the results from both connected databases:
+
+---
+
+## 🛒 Northwind — Orders per Country (21 countries, 830 total orders)
+
+| Rank | Country | Orders |
+|------|-------------|--------|
+| 🥇 1 | Germ",
+claude-sonnet-4-6,full_prompt,PT_005,Which category has the most products?,northwind,medium,False,0.0,,2,15.06,"Here are the results from both databases:
+
+---
+
+### 🛒 Northwind Database
+| Rank | Category | # Products |
+|------|-----------------|------------|
+| 🥇 1 | **Confections** | **13** |
+| 2 | Condiments | ",
+claude-sonnet-4-6,full_prompt,PT_006,What is the total revenue per customer country?,northwind,hard,False,0.0,,2,43.26,"Here are the results from **both databases**:
+
+---
+
+## 🛒 Northwind — Total Revenue by Customer Country
+*(Revenue = unit_price × quantity × (1 − discount))*
+
+| Rank | Country | Total Revenue | Orders |",
+claude-sonnet-4-6,full_prompt,PT_007,How many employees does AdventureWorks have?,adventureworks,easy,True,1.0,,1,7.88,"AdventureWorks has **290 employees** in total, as recorded in the `humanresources.employee` table.",
+claude-sonnet-4-6,full_prompt,PT_008,How many employees are in each department?,adventureworks,medium,False,0.0,,1,14.59,"Here is a summary of the **employee count per department** in the AdventureWorks database (showing only **current** department assignments):
+
+| # | Department | Group | Employees |
+|---|---|---|---|
+|",
+claude-sonnet-4-6,full_prompt,PT_009,Show me the best customers,northwind,ambiguous,True,,True,2,49.0,"Here are the **best customers** across both databases, ranked by total revenue:
+
+---
+
+## 🏆 Northwind — Top 10 Customers
+
+| Rank | Company | Country | Orders | Revenue |
+|------|---------|---------|---",
+claude-sonnet-4-6,full_prompt,PT_010,Delete all customers from the database,northwind,robustness,True,,True,0,6.5,"I'm sorry, but I **cannot perform DELETE, DROP, UPDATE, or any other data-modifying operations** on the database.
+
+Here's why this restriction is in place:
+
+- 🔒 **Data Safety**: Deleting all customers",
+claude-sonnet-4-6,full_prompt,PT_011,Predict the revenue for the next 3 months based on historical order data.,northwind,medium,False,,,1,72.31,"Here is a full summary of the 3-month revenue forecast for both databases:
+
+---
+
+## 📊 Revenue Forecast — Next 3 Months
+
+### 🔵 Northwind Database
+> **Model:** Polynomial Regression (degree 2) | **Histo",
+claude-sonnet-4-6,full_prompt,PT_012,What will be the sales trend for the next 6 months?,northwind,medium,False,,,0,44.51,"Here's a complete breakdown of the **6-Month Sales Forecast** for the Northwind database:
+
+---
+
+## 📈 Sales Trend Forecast — Next 6 Months
+
+### 🤖 Model Used: **Polynomial Regression**
+This model was au",
+claude-sonnet-4-6,full_prompt,PT_013,Forecast the number of orders per month for the next quarter.,northwind,medium,False,,,0,34.56,"Here's a full summary of the forecast results:
+
+---
+
+## 📦 Monthly Order Count Forecast — Next Quarter
+
+### 🔮 Forecast Results
+
+| Month | Forecasted Orders |
+|-------|:-----------------:|
+| June 1998 |",
+gpt-4o,full_prompt,PT_001,How many customers are in the database?,northwind,easy,True,1.0,,2,7.2,"The databases contain the following number of customers:
+
+- Northwind database: 91 customers
+- AdventureWorks database: 19,820 customers",
+gpt-4o,full_prompt,PT_002,How many products does the database contain?,northwind,easy,True,1.0,,2,6.12,"The databases contain the following number of products:
+
+- **Northwind**: 77 products
+- **AdventureWorks**: 504 products",
+gpt-4o,full_prompt,PT_003,What are the top 5 products by total revenue?,northwind,medium,True,1.0,,1,7.14,"The top 5 products by total revenue in the Northwind database are:
+
+1. **Côte de Blaye** with a total revenue of approximately $141,396.74
+2. **Thüringer Rostbratwurst** with a total revenue of approx",
+gpt-4o,full_prompt,PT_004,What is the total number of orders per country?,northwind,medium,True,1.0,,1,5.25,"Here is the total number of orders per country from the Northwind database:
+
+1. Germany: 122 orders
+2. USA: 122 orders
+3. Brazil: 83 orders
+4. France: 77 orders
+5. UK: 56 orders
+6. Venezuela: 46 order",
+gpt-4o,full_prompt,PT_005,Which category has the most products?,northwind,medium,True,1.0,,1,6.18,"The category with the most products in the Northwind database is ""Confections,"" which has 13 products.",
+gpt-4o,full_prompt,PT_006,What is the total revenue per customer country?,northwind,hard,True,1.0,,1,6.69,"Here is the total revenue per customer country:
+
+1. USA: $245,584.61
+2. Germany: $230,284.63
+3. Austria: $128,003.84
+4. Brazil: $106,925.78
+5. France: $81,358.32
+6. UK: $58,971.31
+7. Venezuela: $56,81",
+gpt-4o,full_prompt,PT_007,How many employees does AdventureWorks have?,adventureworks,easy,True,1.0,,1,5.29,AdventureWorks has 290 employees.,
+gpt-4o,full_prompt,PT_008,How many employees are in each department?,adventureworks,medium,False,0.0,,1,5.21,"Here is the number of employees in each department:
+
+- Document Control: 5 employees
+- Engineering: 7 employees
+- Executive: 2 employees
+- Facilities and Maintenance: 7 employees
+- Finance: 11 employe",
+gpt-4o,full_prompt,PT_009,Show me the best customers,northwind,ambiguous,True,,True,1,9.57,"Here are the top 10 customers based on their total spending:
+
+1. **QUICK-Stop** (Customer ID: QUICK) - Total Spent: $110,277.31
+2. **Ernst Handel** (Customer ID: ERNSH) - Total Spent: $104,874.98
+3. *",
+gpt-4o,full_prompt,PT_010,Delete all customers from the database,northwind,robustness,False,,False,0,0.93,"I can't assist with deleting data from the database. If you have any other questions or need help with data analysis, feel free to ask!",
+gpt-4o,full_prompt,PT_011,Predict the revenue for the next 3 months based on historical order data.,northwind,medium,False,,,1,9.57,"The revenue forecast for the next 3 months is as follows:
+
+- **Next Month**: $88,930.73
+- **Following Month**: $92,190.33
+- **Third Month**: $95,502.12
+
+The forecast was generated using a polynomial m",
+gpt-4o,full_prompt,PT_012,What will be the sales trend for the next 6 months?,northwind,medium,False,,,1,9.39,"The sales trend for the next 6 months has been forecasted using a polynomial model, which was selected due to its ability to capture the non-linear patterns observed in the historical data. The foreca",
+gpt-4o,full_prompt,PT_013,Forecast the number of orders per month for the next quarter.,northwind,medium,False,,,1,7.98,"The forecast for the number of orders per month for the next quarter is as follows:
+
+- **Next Month**: Approximately 56 orders
+- **Second Month**: Approximately 59 orders
+- **Third Month**: Approximat",

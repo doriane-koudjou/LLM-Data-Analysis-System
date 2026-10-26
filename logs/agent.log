@@ -1,0 +1,2 @@
+2026-09-17 16:43:16 | INFO | agent | Test log entry
+2026-09-17 16:43:16 | INFO | agent | TOOL: sql_query_tool | TIME: 2.3s | INPUT: SELECT COUNT(*) FROM customers | OUTPUT: [{'count': 91}]

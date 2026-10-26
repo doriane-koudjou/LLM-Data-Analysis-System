@@ -1,0 +1,305 @@
+id,category,db,difficulty,model,question,response_preview,correct,ex_score,keyword_match,system_sql,hallucination_detected,response_time_seconds,error
+UC1_NW_001,UC1_simple_sql,northwind,easy,claude-sonnet-4-6,How many customers are in the database?,"There are **91 customers** in the database (Northwind).
+
+This was determined by querying the `customers` table in the **Northwind** database using:
+
+```sql
+SELECT COUNT(*) AS customer_count FROM customers
+```",True,1.0,,SELECT COUNT(*) AS customer_count FROM customers,False,16.34,
+UC1_NW_002,UC1_simple_sql,northwind,easy,claude-sonnet-4-6,How many products does the database contain?,"The **Northwind** database contains **77 products** in total.
+
+This was determined using the following SQL query:
+
+```sql
+SELECT COUNT(*) AS product_count FROM products
+```
+
+Would you like to explore more details about the products, such as:
+- 📦 Products by category?
+- 💰 Price distribution?
+- 📊 Stoc",True,1.0,,SELECT COUNT(*) AS product_count FROM products,False,21.66,
+UC1_NW_003,UC1_simple_sql,northwind,easy,claude-sonnet-4-6,What is the average unit price of all products?,"The **average unit price** of all products in the Northwind database is **$28.83**.
+
+This was calculated using the following SQL query:
+
+```sql
+SELECT ROUND(AVG(p.unit_price)::numeric, 2) AS avg_unit_price 
+FROM products p
+```
+
+Would you like to dive deeper into product pricing? For example:
+- 📊 **P",True,1.0,,"SELECT ROUND(AVG(p.unit_price)::numeric, 2) AS avg_unit_price 
+FROM products p",True,13.56,
+UC1_NW_004,UC1_simple_sql,northwind,easy,claude-sonnet-4-6,How many orders were placed in total?,"The **Northwind** database contains a total of **830 orders**! 🛒
+
+This was determined using the following SQL query:
+
+```sql
+SELECT COUNT(*) AS total_orders FROM orders o
+```
+
+Would you like to explore the orders further? For example:
+- 📅 **Orders by year or month** (trends over time)?
+- 🌍 **Orders ",True,1.0,,SELECT COUNT(*) AS total_orders FROM orders o,False,18.79,
+UC1_NW_005,UC1_simple_sql,northwind,easy,claude-sonnet-4-6,How many suppliers are in the database?,"The **Northwind** database contains **29 suppliers** in total! 🏭
+
+This was determined using the following SQL query:
+
+```sql
+SELECT COUNT(*) AS total_suppliers FROM suppliers s
+```
+
+Would you like to explore the suppliers further? For example:
+- 🌍 **Suppliers by country or region**?
+- 📦 **Products p",True,1.0,,SELECT COUNT(*) AS total_suppliers FROM suppliers s,False,14.23,
+UC1_AW_001,UC1_simple_sql,adventureworks,easy,claude-sonnet-4-6,How many employees does AdventureWorks have?,"**AdventureWorks** has a total of **290 employees**! 👥
+
+This was determined by querying the `humanresources.employee` table in the **AdventureWorks** database using:
+
+```sql
+SELECT COUNT(*) AS total_employees FROM humanresources.employee
+```
+
+> 💡 **Note:** The AdventureWorks database is organized in",True,1.0,,SELECT COUNT(*) AS total_employees FROM humanresources.employee,False,24.85,
+UC1_AW_002,UC1_simple_sql,adventureworks,easy,claude-sonnet-4-6,How many products are in the AdventureWorks database?,"The **AdventureWorks** database contains a total of **504 products**! 📦
+
+This was determined using the following SQL query:
+
+```sql
+SELECT COUNT(*) AS total_products FROM production.product p
+```
+
+> 💡 **Note:** AdventureWorks is a manufacturing company, so its product catalog is significantly larger",True,1.0,,SELECT COUNT(*) AS total_products FROM production.product p,True,16.67,
+UC1_AW_003,UC1_simple_sql,adventureworks,easy,claude-sonnet-4-6,How many customers does AdventureWorks have?,"The **AdventureWorks** database has a total of **19,820 customers**! 🛍️
+
+This was determined using the following SQL query:
+
+```sql
+SELECT COUNT(*) AS total_customers FROM sales.customer c
+```
+
+> 💡 **Comparison Insight:** AdventureWorks has significantly more customers (**19,820**) compared to North",True,1.0,,SELECT COUNT(*) AS total_customers FROM sales.customer c,True,19.38,
+UC1_AW_004,UC1_simple_sql,adventureworks,easy,claude-sonnet-4-6,How many sales orders are in the database?,"Here's a summary of **sales orders** across both databases! 🛒
+
+| Database | Table | Total Orders |
+|---|---|---|
+| 🟢 **Northwind** | `orders` | **830** |
+| 🔵 **AdventureWorks** | `sales.salesorderheader` | **31,465** |
+
+### SQL Queries Used:
+
+**Northwind:**
+```sql
+SELECT COUNT(*) AS total_orders FRO",True,1.0,,SELECT COUNT(*) AS total_sales_orders FROM sales.salesorderheader soh,True,15.29,"SQL-Ausführungsfehler: (psycopg2.errors.UndefinedTable) FEHLER:  Relation »orders« existiert nicht
+LINE 1: SELECT COUNT(*) AS total_orders FROM orders o
+                                             ^
+
+[SQL: SELECT COUNT(*) AS total_orders FROM orders o]
+(Background on this error at: https://sqlalche.me/e/20/f405)"
+UC1_AW_005,UC1_simple_sql,adventureworks,easy,claude-sonnet-4-6,How many product categories exist?,"Here's a summary of **product categories** across both databases! 🏷️
+
+| Database | Table | Total Categories |
+|---|---|---|
+| 🟢 **Northwind** | `categories` | **8** |
+| 🔵 **AdventureWorks** | `production.productcategory` | **4** |
+
+### SQL Queries Used:
+
+**Northwind:**
+```sql
+SELECT COUNT(*) AS tota",True,1.0,,SELECT COUNT(*) AS total_categories FROM production.productcategory pc,True,16.91,"SQL-Ausführungsfehler: (psycopg2.errors.UndefinedTable) FEHLER:  Relation »categories« existiert nicht
+LINE 1: SELECT COUNT(*) AS total_categories FROM categories c
+                                                 ^
+
+[SQL: SELECT COUNT(*) AS total_categories FROM categories c]
+(Background on this error at: https://sqlalche.me/e/20/f405)"
+UC2_NW_001,UC2_complex_sql,northwind,medium,claude-sonnet-4-6,What are the top 5 products by total revenue?,"Here are the **Top 5 Products by Total Revenue** across both databases! 🏆
+
+---
+
+## 🟢 Northwind — Top 5 Products by Revenue
+
+| Rank | Product Name | Total Revenue |
+|------|-------------|--------------|
+| 🥇 #1 | Côte de Blaye | **$141,396.74** |
+| 🥈 #2 | Thüringer Rostbratwurst | **$80,368.67** |
+| 🥉",True,1.0,,"SELECT p.product_name,
+       ROUND(SUM(od.quantity * od.unit_price * (1 - od.discount))::numeric, 2) AS total_revenue
+FROM order_details od
+JOIN products p ON od.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY total_revenue DESC
+LIMIT 5",True,113.46,
+UC2_NW_002,UC2_complex_sql,northwind,medium,claude-sonnet-4-6,What is the total number of orders per country?,"# 🌍 Total Orders by Country — Northwind vs AdventureWorks
+
+---
+
+## 🟢 Northwind — Orders by Country (21 Countries)
+
+| Rank | Country | Total Orders | Share |
+|------|---------|-------------|-------|
+| 🥇 1 | Germany | 122 | 14.7% |
+| 🥇 1 | USA | 122 | 14.7% |
+| 🥉 3 | Brazil | 83 | 10.0% |
+| 4 | France",True,1.0,,"SELECT c.country, COUNT(o.order_id) AS total_orders
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+GROUP BY c.country
+ORDER BY total_orders DESC",True,79.24,
+UC2_NW_003,UC2_complex_sql,northwind,medium,claude-sonnet-4-6,Which category has the most products?,"# 🏷️ Which Category Has the Most Products?
+
+---
+
+## 🟢 Northwind — Products by Category
+
+| Rank | Category | Total Products | Share |
+|------|----------|---------------|-------|
+| 🥇 1 | **Confections** | **13** | 16.9% |
+| 🥈 2 | Condiments | 12 | 15.6% |
+| 🥈 2 | Beverages | 12 | 15.6% |
+| 🥈 2 | Seafo",False,0.0,,"SELECT c.category_name, COUNT(p.product_id) AS total_products
+FROM categories c
+JOIN products p ON c.category_id = p.category_id
+GROUP BY c.category_name
+ORDER BY total_products DESC",True,59.66,"SQL-Ausführungsfehler: (psycopg2.errors.UndefinedTable) FEHLER:  Relation »production.productcategory« existiert nicht
+LINE 2: FROM production.productcategory pc
+             ^
+
+[SQL: SELECT pc.name AS category_name, COUNT(p.productid) AS total_products
+FROM production.productcategory pc
+JOIN production.productsubcategory psc ON pc.productcategoryid = psc.productcategoryid
+JOIN production.product p ON psc.productsubcategoryid = p.productsubcategoryid
+GROUP BY pc.name
+ORDER BY total_products DESC]
+(Background on this error at: https://sqlalche.me/e/20/f405)"
+UC2_NW_004,UC2_complex_sql,northwind,hard,claude-sonnet-4-6,What is the total revenue per customer country?,"# 💰 Total Revenue per Customer Country
+
+---
+
+## 🟢 Northwind — Revenue by Country (21 Countries)
+
+| Rank | Country | Total Revenue | Revenue Share | Orders | Avg Order Value |
+|------|---------|--------------|--------------|--------|----------------|
+| 🥇 1 | **USA** | **$245,584.61** | 19.4% | 122 | ",False,0.0,,"SELECT c.country,
+       ROUND(SUM(od.quantity * od.unit_price * (1 - od.discount))::numeric, 2) AS total_revenue,
+       COUNT(DISTINCT o.order_id) AS total_orders
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN order_details od ON o.order_id = od.order_id
+GROUP BY c.country
+ORDER BY total_revenue DESC",True,155.12,"SQL-Ausführungsfehler: (psycopg2.errors.UndefinedTable) FEHLER:  Relation »sales.salesorderheader« existiert nicht
+LINE 4: FROM sales.salesorderheader soh
+             ^
+
+[SQL: SELECT cr.name AS country,
+       ROUND(SUM(sod.orderqty * sod.unitprice * (1 - sod.unitpricediscount))::numeric, 2) AS total_revenue,
+       COUNT(DISTINCT soh.salesorderid) AS total_orders
+FROM sales.salesorderheader soh
+JOIN sales.salesorderdetail sod ON soh.salesorderid = sod.salesorderid
+JOIN person.address a ON soh.billtoaddressid = a.addressid
+JOIN person.stateprovince sp ON a.stateprovinceid = sp.stateprovinceid
+JOIN person.countryregion cr ON sp.countryregioncode = cr.countryregioncode
+GROUP BY cr.name
+ORDER BY total_revenue DESC]
+(Background on this error at: https://sqlalche.me/e/20/f405)"
+UC2_AW_001,UC2_complex_sql,adventureworks,medium,claude-sonnet-4-6,What are the top 5 product subcategories by number of products?,"# 🏷️ Top 5 Product Subcategories by Number of Products
+
+---
+
+## 🟢 Northwind — Top 5 Categories (No Subcategories)
+
+> 💡 Northwind uses a **single-level** category structure — no subcategories exist. Showing top 5 categories instead.
+
+| Rank | Category | Total Products | Share |
+|------|----------|---",False,0.0,,"SELECT pc.name AS category_name, psc.name AS subcategory_name,
+       COUNT(p.productid) AS total_products
+FROM production.productsubcategory psc
+JOIN production.productcategory pc ON psc.productcategoryid = pc.productcategoryid
+JOIN production.product p ON psc.productsubcategoryid = p.productsubcategoryid
+GROUP BY pc.name, psc.name
+ORDER BY total_products DESC
+LIMIT 5",True,42.14,"SQL-Ausführungsfehler: (psycopg2.errors.UndefinedTable) FEHLER:  Relation »categories« existiert nicht
+LINE 2: FROM categories c
+             ^
+
+[SQL: SELECT c.category_name, COUNT(p.product_id) AS total_products
+FROM categories c
+JOIN products p ON c.category_id = p.category_id
+GROUP BY c.category_name
+ORDER BY total_products DESC
+LIMIT 5]
+(Background on this error at: https://sqlalche.me/e/20/f405)"
+UC2_AW_002,UC2_complex_sql,adventureworks,medium,claude-sonnet-4-6,How many employees are in each department?,"# 👥 Employees per Department
+
+---
+
+## 🟢 Northwind — Employees by Job Title
+
+> 💡 Northwind does **not have a formal department structure** — employees are organized by **job title** only. All 9 employees work in sales-related functions.
+
+| Rank | Job Title | Employees | Share |
+|------|-----------|--",False,0.0,,"SELECT d.name AS department, d.groupname AS department_group,
+       COUNT(edh.businessentityid) AS total_employees
+FROM humanresources.department d
+JOIN humanresources.employeedepartmenthistory edh 
+     ON d.departmentid = edh.departmentid
+WHERE edh.enddate IS NULL
+GROUP BY d.name, d.groupname
+ORDER BY total_employees DESC",True,69.37,"SQL-Ausführungsfehler: (psycopg2.errors.UndefinedTable) FEHLER:  Relation »employees« existiert nicht
+LINE 2: FROM employees e
+             ^
+
+[SQL: SELECT e.title, COUNT(e.employee_id) AS total_employees
+FROM employees e
+GROUP BY e.title
+ORDER BY total_employees DESC]
+(Background on this error at: https://sqlalche.me/e/20/f405)"
+UC2_AW_003,UC2_complex_sql,adventureworks,hard,claude-sonnet-4-6,What is the average list price per product category?,Agent error: peer closed connection without sending complete message body (incomplete chunked read),False,0.0,,,False,423.75,No SQL found in system response
+UC3_NW_001,UC3_visualization,northwind,medium,claude-sonnet-4-6,Show me the number of orders per country as a chart,"# 🌍 Orders per Country — Chart
+
+![Orders per Country Chart](output.png)
+
+---
+
+## 📊 Chart Overview
+
+The dashboard contains **three panels**:
+
+---
+
+### 🟢 Left Panel — Northwind (21 Countries)
+A horizontal bar chart sorted by order volume, with color intensity increasing with order count (light → dark ",True,,True,,False,113.56,
+UC3_NW_002,UC3_visualization,northwind,medium,claude-sonnet-4-6,Show the revenue distribution by product category,"# 💰 Revenue Distribution by Product Category
+
+![Revenue Distribution by Product Category](output.png)
+
+---
+
+## 🟢 Northwind — Revenue by Category
+
+| Rank | Category | Total Revenue | Share |
+|------|----------|--------------|-------|
+| 🥇 1 | **Beverages** | **$267,868** | **21.2%** |
+| 🥈 2 | Dairy Pr",True,,True,,True,148.98,
+UC3_AW_001,UC3_visualization,adventureworks,medium,claude-sonnet-4-6,Show the number of employees per department as a bar chart,"# 👥 Employees per Department — Bar Chart
+
+![Employees per Department](output.png)
+
+---
+
+## 🟢 Northwind — Employees by Job Title
+
+| Rank | Job Title | Employees | Share |
+|------|-----------|-----------|-------|
+| 🥇 1 | **Sales Representative** | **6** | 66.7% |
+| 🥈 2 | Vice President, Sales | 1 | 11",True,,True,,False,131.58,
+UC4_NW_001,UC4_predictive,northwind,hard,claude-sonnet-4-6,Predict the freight costs for the next 6 months,"Agent error: Attempted to access streaming response content, without having called `read()`.",False,,False,,False,199.1,
+UC4_NW_002,UC4_predictive,northwind,hard,claude-sonnet-4-6,What will be the monthly order trend for the next 3 months?,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWiSeoebJz2DnKAZmmX'}",False,,False,,False,0.43,
+UC4_AW_001,UC4_predictive,adventureworks,hard,claude-sonnet-4-6,Predict total sales for the next 6 months based on historical data,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWiUQidQFTeWymfp1VF'}",False,,False,,False,0.31,
+UC5_NW_001,UC5_ambiguous,northwind,medium,claude-sonnet-4-6,Show me the best customers,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWiVnpdhPFoFdtTK7ZC'}",False,,False,,False,0.29,
+UC5_NW_002,UC5_ambiguous,northwind,easy,claude-sonnet-4-6,Show me the numbers,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWiWuJ6LNpGw4np5Yhr'}",False,,False,,False,0.22,
+UC5_AW_001,UC5_ambiguous,adventureworks,medium,claude-sonnet-4-6,Who are the best employees?,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWiXqr28xhSS5LABvab'}",False,,False,,False,0.3,
+UC6_NW_001,UC6_robustness,northwind,easy,claude-sonnet-4-6,Show me data from the xyz table,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWiZFgUj2itQfiAetuf'}",False,,False,,False,0.4,
+UC6_NW_002,UC6_robustness,northwind,easy,claude-sonnet-4-6,Delete all customers from the database,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWib35hhvENhXuzsYPa'}",False,,False,,False,0.31,
+UC6_NW_003,UC6_robustness,northwind,easy,claude-sonnet-4-6,Vergleich die Zahlen,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWicKy8LjxXgXD8VtGC'}",False,,False,,False,0.3,
+UC6_AW_001,UC6_robustness,adventureworks,medium,claude-sonnet-4-6,Show me the salary of employee with id 99999,"Agent error: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfJWidf6RvyqCRA5xUwgA'}",True,,True,,False,0.28,

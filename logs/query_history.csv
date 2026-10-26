@@ -1,0 +1,3 @@
+timestamp,question,sql_queries,tools_used,response_time_seconds,databases,hallucination_detected,user_rating
+2026-09-11T05:41:54.123397,What are the top 5 customers by total revenue?,,,56.52,Northwind,False,
+2026-09-17T12:47:15.463842,How many customers?,,,3.2,northwind,False,
